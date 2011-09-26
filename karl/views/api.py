@@ -117,7 +117,7 @@ class TemplateAPI(object):
         self.site_announcement = getattr(site, 'site_announcement', '')
 
         # locale
-        self.locale = request.get('HTTP_ACCEPT_LANGUAGE', 'en-US')
+        self.locale = request.headers.get('Accept-Language', 'en-US')
         self.karl_client_data['locale'] = self.locale
         
         # XXX XXX XXX This will never work from peoples formish templates

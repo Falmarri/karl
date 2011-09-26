@@ -7,6 +7,20 @@
     <link rel="alternate" type="application/atom+xml" 
 	  title="${api.page_title}" href="${feed_url}"
 	  />
+    <script language="javascript" type="text/javascript">
+        //<![CDATA[
+        $(document).ready(function() {
+            // localize dates
+            $('td.cldate').each( function(i) {
+                var d=Globalize.format(new Date($(this).text()),
+                                       'd',
+                                       Globalize.culture(karl_client_data['locale'])
+                                      );
+                $(this).text(d)
+            });
+        });
+        //]]>
+    </script>
   </span>
   
   <div metal:fill-slot="content">

@@ -355,6 +355,15 @@
                 sortDirection: filegrid_data.sortDirection,
                 initialState: filegrid_data
             });
+            // localize dates
+            $('.grid-date').each( function(i) {
+                var d=Globalize.format(new Date($(this).text()),
+                                       'd',
+                                       Globalize.culture(karl_client_data['locale'])
+                                      );
+                $(this).text(d)
+            });
+
         });
         //]]>
       </script>

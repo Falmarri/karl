@@ -115,6 +115,11 @@ class TemplateAPI(object):
         self.can_email = has_permission('email', site, request)
         self.admin_url = model_url(site, request, 'admin.html')
         self.site_announcement = getattr(site, 'site_announcement', '')
+
+        # locale
+        self.locale = request.get('HTTP_ACCEPT_LANGUAGE', 'en-US')
+        self.karl_client_data['locale'] = self.locale
+        
         # XXX XXX XXX This will never work from peoples formish templates
         # XXX XXX XXX (edit_profile and derivates) because, in those form
         # XXX XXX XXX controllers, the api is instantiated from __init__,
